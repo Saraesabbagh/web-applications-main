@@ -11,7 +11,7 @@ describe Application do
   let(:app) { Application.new }
 
   describe 'Creating a new post' do
-    context 'GET /' do
+    context 'GET to /' do
       it 'should get the form to add a new post' do
         response = get('/')
 
@@ -23,7 +23,7 @@ describe Application do
       end
     end
 
-    context 'POST /' do
+    context 'POST to /' do
       it 'should add the new post' do
         _response = post(
           '/posts',
@@ -31,8 +31,9 @@ describe Application do
           content: 'Hi there',
           tags: 'random,things'
         )
+       response = get('/')
 
-        response = get('/')
+        # post_lsit = get('/')
 
         expect(response.body).to include('<h3>A new post</h3>')
       end
