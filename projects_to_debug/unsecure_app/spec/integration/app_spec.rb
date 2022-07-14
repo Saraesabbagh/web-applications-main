@@ -27,5 +27,12 @@ describe Application do
       expect(response.status).to eq(200)
       expect(response.body).to include('Hi Aurora!')
     end
+    it 'should say invalid entry when given an invalid entry' do
+      response = post('/hello', name: '/$')
+      expect(response.status).to eq(200)
+      expect(response.body).to include('invalid entry')
+    end
+
+
   end
 end
