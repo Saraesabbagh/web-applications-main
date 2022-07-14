@@ -12,8 +12,8 @@ class Application < Sinatra::Base
     return erb(:index)
   end
 
-  get '/check' do
-    valid = PostcodeChecker.new.valid?(params[:postcode])
+  post '/check' do
+    @valid = PostcodeChecker.new.valid?(params[:postcode]) #programme debugged was missing the @ before valid here. 
     return erb(:check)
   end
 end
